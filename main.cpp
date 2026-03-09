@@ -16,17 +16,42 @@ int main() {
     Node *head = nullptr;
     int choice = 0;
 
-    cout << "[1] new nodes are added to the head of linked list" << endl;
-    cout << "[2] new nodes are added to the tail of linked list" << endl;
+    cout << "[1] New nodes are added to the head of linked list" << endl;
+    cout << "[2] New nodes are added to the tail of linked list" << endl;
     cin >> choice;
     while ((choice != 1) || (choice != 2)){
-        cout << "please choose a valid option of 1 or 2" << endl;
+        cout << "Please select a valid option of 1 or 2" << endl;
         cin >> choice;
     }
 
-    Node *newnode = nullptr;
-    while (choice > 0) {
-        cout << "enter review rating 0-5" << endl;
+    while (choice == 1) {
+        Node *newnode = nullptr;
+        cout << "Enter review rating 0-5:" << endl;
+        cin >> newnode->rating;
+        cout << "Enter review comment:" << endl;
+        cin >> newnode->comment;
+        frontN(head, newnode);
+        cout << "Enter another review? (Y=1/N=0)" << endl;
+        cin >> choice;
+        while ((choice != 1) || (choice != 0)){
+            cout << "Please select a valid option of 1 or 0" << endl;
+            cin >> choice;
+        }
+    }
+
+    while (choice == 2) {
+        Node *newnode = nullptr;
+        cout << "Enter review rating 0-5:" << endl;
+        cin >> newnode->rating;
+        cout << "Enter review comment:" << endl;
+        cin >> newnode->comment;
+        tailN(head, newnode);
+        cout << "Enter another review? (Y=2/N=0)" << endl;
+        cin >> choice;
+        while ((choice != 2) || (choice != 0)){
+            cout << "Please select a valid option of 2 or 0" << endl;
+            cin >> choice;
+        }
     }
     
     return 0;
