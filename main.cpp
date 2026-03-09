@@ -3,7 +3,7 @@
 using namespace std;
 
 struct Node {
-    float rating;
+    double rating;
     string comment;
     Node *next;
 };
@@ -13,10 +13,22 @@ void tailN(Node *&, Node *);
 void output(Node *);
 
 int main() {
+    Node *head = nullptr;
     int choice = 0;
+
     cout << "[1] new nodes are added to the head of linked list" << endl;
     cout << "[2] new nodes are added to the tail of linked list" << endl;
     cin >> choice;
+    while ((choice != 1) || (choice != 2)){
+        cout << "please choose a valid option of 1 or 2" << endl;
+        cin >> choice;
+    }
+
+    Node *newnode = nullptr;
+    while (choice > 0) {
+        cout << "enter review rating 0-5" << endl;
+    }
+    
     return 0;
 }
 
