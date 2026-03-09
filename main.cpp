@@ -17,46 +17,43 @@ int main() {
     //declarations
     Node *head = nullptr;
     int choice = 0;
+    string sentence;
+    double rate;
 
     //giving choice of adding to head or tail
+    cout << "Select which linked list method should be used:" << endl;
     cout << "[1] New nodes are added to the head of linked list" << endl;
     cout << "[2] New nodes are added to the tail of linked list" << endl;
     cin >> choice;
-    while ((choice != 1) || (choice != 2)){
-        cout << "Please select a valid option of 1 or 2" << endl;
-        cin >> choice;
-    }
 
     //code for head
     Node *newnode = nullptr;
     while (choice == 1) {
-        cout << "Enter review rating 0-5:" << endl;
-        cin >> newnode->rating;
+        cout << "Enter review rating 0.0-5.0:" << endl;
+        cin >> rate;
+        newnode->rating = rate;
         cout << "Enter review comment:" << endl;
-        cin >> newnode->comment;
+        cin.ignore();
+        getline(cin, sentence);
+        newnode->comment = sentence;
         frontN(head, newnode);
         cout << "Enter another review? (Y=1/N=0)" << endl;
         cin >> choice;
-        while ((choice != 1) || (choice != 0)){
-            cout << "Please select a valid option of 1 or 0" << endl;
-            cin >> choice;
-        }
         deleteL(newnode);
     }
 
     //code for tail
     while (choice == 2) {
         cout << "Enter review rating 0.0-5.0:" << endl;
-        cin >> newnode->rating;
+        cin >> rate;
+        newnode->rating = rate;
         cout << "Enter review comment:" << endl;
-        cin >> newnode->comment;
+        cin.ignore();
+        getline(cin, sentence);
+        newnode->comment = sentence;
         tailN(head, newnode);
         cout << "Enter another review? (Y=2/N=0)" << endl;
         cin >> choice;
-        while ((choice != 2) || (choice != 0)){
-            cout << "Please select a valid option of 2 or 0" << endl;
-            cin >> choice;
-        }
         deleteL(newnode);
     }
 
