@@ -41,7 +41,7 @@ int main() {
 
     while (choice == 2) {
         Node *newnode = nullptr;
-        cout << "Enter review rating 0-5:" << endl;
+        cout << "Enter review rating 0.0-5.0:" << endl;
         cin >> newnode->rating;
         cout << "Enter review comment:" << endl;
         cin >> newnode->comment;
@@ -53,7 +53,10 @@ int main() {
             cin >> choice;
         }
     }
-    
+
+    cout << "Outputting all reviews: " << endl;
+    output(head);
+
     return 0;
 }
 
@@ -83,4 +86,19 @@ void tailN(Node *&head, Node *newnode) {
             current = current->next;
         }
     }
+}
+
+void output(Node *hd) {
+    if (!hd) {
+        cout << "empty list.\n";
+        return;
+    }
+
+    int count = 1;
+    Node *current = hd;
+    while (current) {
+        cout << "Review #" << count << ": ";
+        cout << current->rating << ": " << current ->comment;
+    }
+    cout << endl;
 }
