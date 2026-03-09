@@ -17,8 +17,6 @@ int main() {
     //declarations
     Node *head = nullptr;
     int choice = 0;
-    string sentence;
-    double rate;
 
     //giving choice of adding to head or tail
     cout << "Select which linked list method should be used:" << endl;
@@ -29,32 +27,28 @@ int main() {
     //code for head
     Node *newnode = nullptr;
     while (choice == 1) {
+        newnode = new Node;
         cout << "Enter review rating 0.0-5.0:" << endl;
-        cin >> rate;
-        newnode->rating = rate;
+        cin >> newnode->rating;
         cout << "Enter review comment:" << endl;
         cin.ignore();
-        getline(cin, sentence);
-        newnode->comment = sentence;
+        getline(cin, newnode->comment);
         frontN(head, newnode);
         cout << "Enter another review? (Y=1/N=0)" << endl;
         cin >> choice;
-        deleteL(newnode);
     }
 
     //code for tail
     while (choice == 2) {
+        newnode = new Node;
         cout << "Enter review rating 0.0-5.0:" << endl;
-        cin >> rate;
-        newnode->rating = rate;
+        cin >> newnode->rating;
         cout << "Enter review comment:" << endl;
         cin.ignore();
-        getline(cin, sentence);
-        newnode->comment = sentence;
+        getline(cin, newnode->comment);
         tailN(head, newnode);
         cout << "Enter another review? (Y=2/N=0)" << endl;
         cin >> choice;
-        deleteL(newnode);
     }
 
     cout << "Outputting all reviews: " << endl;
@@ -108,11 +102,12 @@ void output(Node *hd) {
         cout << " > Review #" << count++ << ": ";
         cout << current->rating << ": " << current ->comment << endl;
         sum += current->rating;
+        current = current->next;
     }
-    cout << " > Average: " << sum/count << endl;
+    cout << " > Average: " << sum/(count-1) << endl;
 }
 
-//deletes a linked list
+//deletes linked list
 void deleteL(Node *&n) {
     Node *current = n;
     while (current) {
